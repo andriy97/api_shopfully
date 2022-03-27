@@ -39,7 +39,7 @@
 
       php artisan serve
 
-Start Apache and MySQL on xampp
+- Start Apache and MySQL on xampp
 
     
     
