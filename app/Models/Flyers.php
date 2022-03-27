@@ -17,7 +17,7 @@ class Flyers extends Model
         $now=date('Y-m-d');
         $limit=isset(request()->query()['limit']) ? (int)request()->query()['limit'] : 100; //default 100
         $allowedFilters=array('is_published', 'category');
-        $notAllowedFilters=array_diff_key( request()->query()['filter'], array_flip($allowedFilters));
+        $notAllowedFilters=isset(request()->query()['filter']) ? array_diff_key( request()->query()['filter'], array_flip($allowedFilters)) : array();
     
 
         $flyers = QueryBuilder::for(Flyers::class)
@@ -54,7 +54,7 @@ class Flyers extends Model
                 "code"=> 404,
                 "error"=> array(
                     "message"=>"Not Found",
-                    "debug"=>"No data found with these filters: ".http_build_query(request()->query()['filter'],'',', ')
+                    "debug"=>"No data found with these filters"
                 )
             ],200);
     }
