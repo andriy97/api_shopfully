@@ -17,8 +17,23 @@ class Flyers extends Model
         $now=date('Y-m-d');
         $limit=isset(request()->query()['limit']) ? (int)request()->query()['limit'] : 100; //default 100
         $allowedFilters=array('is_published', 'category');
+        $allowedFields=array('id', 'title', 'start_date', 'end_date', 'is_published','retailer', 'category');
+        //check if query contains not allowed filters
         $notAllowedFilters=isset(request()->query()['filter']) ? array_diff_key( request()->query()['filter'], array_flip($allowedFilters)) : array();
+        //check if query contains not allowed fields
+        $notAllowedFields=isset(request()->query()['fields']['flyers']) ? array_diff_key( array_flip(explode(",", request()->query()['fields']['flyers'])), array_flip($allowedFields)) : array();
     
+
+        //response for not allowed fields
+        if(sizeOf($notAllowedFields)>0)
+        return response()->json([
+            "success"=> false,
+            "code"=> 400,
+            "error"=> array(
+                "message"=>"Bad Request",
+                "debug"=>"Not allowed fields: ".implode(", ",array_keys($notAllowedFields))
+            )
+        ], 200);
 
         $flyers = QueryBuilder::for(Flyers::class)
         //default params
@@ -26,6 +41,8 @@ class Flyers extends Model
         ->where('end_date', '>=', $now)
         //filters
         ->allowedFilters($allowedFilters)
+        //request specific fields
+        ->allowedFields($allowedFields)
         ->paginate($limit)
         ->appends(request()->query());
 
@@ -38,7 +55,9 @@ class Flyers extends Model
                     "message"=>"Bad Request",
                     "debug"=>"Not allowed filters: ".implode(", ",array_keys($notAllowedFilters))
                 )
-            ], 200);;
+            ], 200);
+
+       
         
         //successful response
         $is_empty=$flyers->getCollection()->isEmpty();
@@ -54,7 +73,7 @@ class Flyers extends Model
                 "code"=> 404,
                 "error"=> array(
                     "message"=>"Not Found",
-                    "debug"=>"No data found with these filters"
+                    "debug"=>"No data found"
                 )
             ],200);
     }
