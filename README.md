@@ -1,5 +1,5 @@
 ## Info
-Technologies:
+#### Technologies:
 
 PHP 8 
 
@@ -11,7 +11,7 @@ mysql
 
 
 
-laravel libraries used:
+#### laravel libraries used:
 
 spatie/laravel-query-builder
 
