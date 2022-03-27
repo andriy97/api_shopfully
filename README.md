@@ -1,3 +1,13 @@
+## Info
+php 8 
+laravel 9
+composer 
+mysql
+
+libreries laravel from github :
+
+spatie/laravel-query-builder
+spatie/laravel-json-api-paginate
 
 ## Installation 
 
