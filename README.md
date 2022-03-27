@@ -25,17 +25,15 @@ Generate a new JWT authentication secret key
 
     php artisan jwt:generate
     
-Create a database named 'shopfully_db' on your local server 
-    
-    I advise using xampp
+- Create a database named 'shopfully_db' on your local server 
+   
 
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
     
-Import the .csv file into your local database 
+- Import the .csv file into your local database 
     
-    import .csv file to shopfully_db
 
 Start the local development server
 
