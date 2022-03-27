@@ -64,6 +64,16 @@ spatie/laravel-json-api-paginate
 You can now access the api at http://localhost:8000/flyers.json
 
 
+## Usage
+
+#### Important
+The fields selector is enabled but instead of using 
+
+    /flyers.json?fields=id,title
+    
+you should use 
+
+    /flyers.json?fields[flyers]=id,title
 
 
 ## Note
