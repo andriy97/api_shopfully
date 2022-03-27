@@ -9,7 +9,9 @@ composer
 
 mysql
 
-libreries laravel from github :
+
+
+laravel libraries used:
 
 spatie/laravel-query-builder
 
