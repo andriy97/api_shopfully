@@ -62,4 +62,14 @@ spatie/laravel-json-api-paginate
     
     
 You can now access the api at http://localhost:8000/flyers.json
+
+
+
+
+## Note
+In case composer didn't install all dependencies run these commands to install the required libraries
+
+    composer require spatie/laravel-query-builder
+    composer require spatie/laravel-json-api-paginate
+
  
