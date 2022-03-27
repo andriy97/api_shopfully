@@ -35,9 +35,9 @@ Run the database migrations (**Set the database connection in .env before migrat
 - Import the .csv file into your local database 
     
 
-Start the local development server
+- Start the local development server
 
-    php artisan serve
+      php artisan serve
 
 Start Apache and MySQL on xampp
 
