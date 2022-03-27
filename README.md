@@ -1,10 +1,7 @@
-# api_shopfully
-
-# Getting started
 
 ## Installation 
 
--Clone the repository
+- Clone the repository
 
     git clone git@github.com:andriy97/api_shopfully.git
 
